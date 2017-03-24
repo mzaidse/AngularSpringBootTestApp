@@ -1,5 +1,6 @@
 package com.app.web.rest;
 
+import com.app.security.SecurityUtils;
 import com.codahale.metrics.annotation.Timed;
 import com.app.domain.Address;
 
@@ -26,7 +27,7 @@ public class AddressResource {
     private final Logger log = LoggerFactory.getLogger(AddressResource.class);
 
     private static final String ENTITY_NAME = "address";
-        
+
     private final AddressRepository addressRepository;
 
     public AddressResource(AddressRepository addressRepository) {
@@ -84,7 +85,7 @@ public class AddressResource {
     @Timed
     public List<Address> getAllAddresses() {
         log.debug("REST request to get all Addresses");
-        List<Address> addresses = addressRepository.findAll();
+        List<Address> addresses = addressRepository.findByCustomerUserLogin(SecurityUtils.getCurrentUserLogin());
         return addresses;
     }
 
