@@ -26,7 +26,7 @@ public class CustomerResource {
     private final Logger log = LoggerFactory.getLogger(CustomerResource.class);
 
     private static final String ENTITY_NAME = "customer";
-        
+
     private final CustomerRepository customerRepository;
 
     public CustomerResource(CustomerRepository customerRepository) {
@@ -84,7 +84,7 @@ public class CustomerResource {
     @Timed
     public List<Customer> getAllCustomers() {
         log.debug("REST request to get all Customers");
-        List<Customer> customers = customerRepository.findAll();
+        List<Customer> customers = customerRepository.findByUserIsCurrentUser();
         return customers;
     }
 

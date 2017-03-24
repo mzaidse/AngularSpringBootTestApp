@@ -12,4 +12,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface AddressRepository extends JpaRepository<Address,Long> {
 
+    List<Address> findByCustomerUserLogin(String currentUserLogin);
 }
