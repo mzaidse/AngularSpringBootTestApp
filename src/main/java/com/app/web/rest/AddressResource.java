@@ -1,15 +1,16 @@
 package com.app.web.rest;
 
-import com.app.security.SecurityUtils;
-import com.codahale.metrics.annotation.Timed;
 import com.app.domain.Address;
-
 import com.app.repository.AddressRepository;
+import com.app.security.AuthoritiesConstants;
+import com.app.security.SecurityUtils;
 import com.app.web.rest.util.HeaderUtil;
+import com.codahale.metrics.annotation.Timed;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -81,6 +82,7 @@ public class AddressResource {
      *
      * @return the ResponseEntity with status 200 (OK) and the list of addresses in body
      */
+    @Secured(AuthoritiesConstants.ADMIN)
     @GetMapping("/addresses")
     @Timed
     public List<Address> getAllAddresses() {

@@ -30,6 +30,7 @@
       "protractor"
     ],
     "jhiPrefix": "jhi",
-    "enableTranslation": false
+    "enableTranslation": false,
+    "herokuAppName": "angular-spring-app-1"
   }
 }

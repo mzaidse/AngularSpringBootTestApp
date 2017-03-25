@@ -1,10 +1,9 @@
 package com.app.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
 import com.app.domain.Customer;
-
 import com.app.repository.CustomerRepository;
 import com.app.web.rest.util.HeaderUtil;
+import com.codahale.metrics.annotation.Timed;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -94,6 +93,7 @@ public class CustomerResource {
      * @param id the id of the customer to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the customer, or with status 404 (Not Found)
      */
+//    @Secured(AuthoritiesConstants.ADMIN)
     @GetMapping("/customers/{id}")
     @Timed
     public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
